@@ -3,6 +3,7 @@ using BookMillApp_Application.Services;
 using BookMillApp_Domain.Model;
 using BookMillApp_Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -27,13 +28,27 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x => { x.EnableAnnotations(); });
 builder.Services.ResolveJwt(builder.Configuration);
 
+builder.Services.AddApiVersioningConfigured();
+builder.Services.AddSwaggerSwashbuckleConfigured();
+builder.Services.AddEndpointsApiExplorer();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+
+    // Enable middleware to serve Swagger-UI (HTML, JS, CSS, etc.) by specifying the Swagger JSON endpoint(s).
+    var descriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+    app.UseSwaggerUI(options =>
+    {
+        // Build a swagger endpoint for each discovered API version
+        foreach (var description in descriptionProvider.ApiVersionDescriptions)
+        {
+            options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+        }
+    });
 }
 
 app.UseHttpsRedirection();
