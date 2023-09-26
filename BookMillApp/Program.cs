@@ -28,8 +28,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x => { x.EnableAnnotations(); });
 builder.Services.ResolveJwt(builder.Configuration);
 
-builder.Services.AddApiVersioningConfigured();
-builder.Services.AddSwaggerSwashbuckleConfigured();
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
@@ -39,16 +37,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
 
-    // Enable middleware to serve Swagger-UI (HTML, JS, CSS, etc.) by specifying the Swagger JSON endpoint(s).
-    var descriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-    app.UseSwaggerUI(options =>
-    {
-        // Build a swagger endpoint for each discovered API version
-        foreach (var description in descriptionProvider.ApiVersionDescriptions)
-        {
-            options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-        }
-    });
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

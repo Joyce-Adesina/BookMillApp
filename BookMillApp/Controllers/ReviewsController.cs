@@ -1,6 +1,9 @@
 ﻿using BookMillApp_Application.Services.Abstraction;
 using BookMillApp_Domain.Dtos.RequestDto;
+using BookMillApp_Domain.Dtos.ResponseDto;
 using Microsoft.AspNetCore.Mvc;
+using PaperFineryApp_Shared;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,6 +21,19 @@ namespace BookMillApp.Controllers
             _reviews = reviews;
         }
 
+        /// <summary>
+        /// get review by useremail
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <param name="reviewCreationDto"></param>
+        /// <returns></returns>
+
+        [HttpPost]
+        [SwaggerResponse(200, Type = typeof(StandardResponse<string>))]
+        [SwaggerResponse(400, Type = typeof(ErrorResponseDto))]
+        [SwaggerResponse(401, Type = typeof(ErrorResponseDto))]
+        [SwaggerResponse(403, Type = typeof(ErrorResponseDto))]
+
         [HttpPost("create")]
         public async Task<IActionResult> CreateReview( string userEmail, ReviewCreationDto reviewCreationDto)
         {
@@ -26,6 +42,11 @@ namespace BookMillApp.Controllers
             var responseFromCreation = await _reviews.CreateReview(userEmail, reviewCreationDto);
             return Ok(responseFromCreation);
         }
+
+        /// <summary>
+        /// get all reviews
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet]
         public async Task<IActionResult> GetAllReviews()

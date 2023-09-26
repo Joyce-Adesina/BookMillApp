@@ -70,9 +70,23 @@ namespace BookMillApp.Extension
             services.AddSwaggerGen(opt =>
 
             {
-
-                opt.SwaggerDoc("v1", new OpenApiInfo { Title = "DropMate API", Version = "v1" });
-
+                opt.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "BookMill API",
+                    Description = "The BookMill API,Introducing an innovative app tailored for Recycling companies (Manufacturers) and Suppliers, streamlining the collection of old and used papers/books from businesses, residences, and educational institutions. On this platform, suppliers can efficiently catalog and monetize their collections, while also forging valuable connections with recycling manufacturers. From librarians with stacks of outdated editions to bookstores with excess inventory, corporate entities, newspaper vendors, and individuals, BookMill ensures your books are redirected to their most suitable next stop.\r\n\r\nEmbrace a more intelligent way to declutter, while also turning your old papers into profit. – it's time to BookMill.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "BookMill Inc",
+                        Email = "joycegabriels32@gmail.com",
+                        Url = new Uri("https://bookmill.com")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "IP License",
+                        Url = new Uri("https://dropmate.com/licence")
+                    },
+                    Version = "v1"
+                });
                 opt.SchemaFilter<EnumSchemaFilter>();
 
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -92,8 +106,6 @@ namespace BookMillApp.Extension
                     Scheme = "bearer"
 
                 });
-
-
 
                 opt.AddSecurityRequirement(new OpenApiSecurityRequirement
 
@@ -122,9 +134,13 @@ namespace BookMillApp.Extension
                     }
 
                 });
+                string path = @"C:\Users\joyce.gabriel\OneDrive - Africa Prudential\Desktop\Code\BookMillApp\BookMillApp\Controllers";
+                var xmlFile = $"Documentation.xml";
+                var xmlPath = Path.Combine(path, xmlFile);
+                var documentationPath = Path.GetFullPath(xmlPath);
 
+                opt.IncludeXmlComments(documentationPath);
             });
-
         }
     }
 }

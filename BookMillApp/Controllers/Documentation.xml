@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookMillApp</name>
+    </assembly>
+    <members>
+        <member name="M:BookMillApp.Controllers.AuthenticationController.RegisterUser(BookMillApp_Domain.Dtos.RequestDto.RegisterRequestDto)">
+            <summary>
+            Registers new user to the BookMill
+            </summary>
+            <param name="register"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.AuthenticationController.Login(BookMillApp_Domain.Dtos.RequestDto.UserLoginRequestDto)">
+            <summary>
+            logins in user to BookMill
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.AuthenticationController.ConfirmEmail(System.String,System.String)">
+            <summary>
+            confirmation of email using token
+            </summary>
+            <param name="email"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.AuthenticationController.GetAllUsers">
+            <summary>
+            get allUsers using the app
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.ManufacturersController.UpdateManufacturerProfile(System.String,BookMillApp_Domain.Dtos.RequestDto.UpdateManufacturerDto)">
+            <summary>
+            update manufacturers profile using manufacturerId 
+            </summary>
+            <param name="manufacturerId"></param>
+            <param name="updatemanu"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.ManufacturersController.GetAllManufacturers">
+            <summary>
+            retrieve all manufacturers profile
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.ManufacturersController.GetAllManufacturbyId(System.String)">
+            <summary>
+            get all manufacturer using manufacturerId
+            </summary>
+            <param name="manufacturerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.OrdersController.CreateOrder(System.String,BookMillApp_Domain.Dtos.RequestDto.OrderRequestDto)">
+            <summary>
+            create order for record
+            </summary>
+            <param name="orderId"></param>
+            <param name="OrderRequestDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.OrdersController.GetAllOrders">
+            <summary>
+            retrieves all orders for record
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.OrdersController.GetorderById(System.String)">
+            <summary>
+            get a single order using orderId
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.OrdersController.FileUpload(System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            uploads file documents
+            </summary>
+            <param name="images"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.ReviewsController.CreateReview(System.String,BookMillApp_Domain.Dtos.RequestDto.ReviewCreationDto)">
+            <summary>
+            get review by useremail
+            </summary>
+            <param name="userEmail"></param>
+            <param name="reviewCreationDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.ReviewsController.GetAllReviews">
+            <summary>
+            get all reviews
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.SupplierController.GetAllSuppliers">
+            <summary>
+            get all suppliers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.SupplierController.GetASupplierById(System.String)">
+            <summary>
+            get suppliers profile using supplierId
+            </summary>
+            <param name="supplierId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BookMillApp.Controllers.SupplierController.UpdateSupplierProfile(System.String,BookMillApp_Domain.Dtos.RequestDto.UpdateSupplierDto)">
+            <summary>
+            update supplier's profile using supplierId
+            </summary>
+            <param name="supplierId"></param>
+            <param name="updatesupplier"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
